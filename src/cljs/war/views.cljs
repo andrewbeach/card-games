@@ -12,9 +12,9 @@
 
 (defn counter [label & vals]
   [:div.counter
-   [:p label]
+   [:p.counter-label label]
    (for [v vals]
-     [:p v])])
+     [:p.counter-value v])])
 
 (defn counters []
   (let [decks (re-frame/subscribe [:decks])]
@@ -22,14 +22,14 @@
       [re-com/h-box
        :children [[counter
                    "Player 1"
-                   (count (first @decks))
-                   (game/sum-value (first @decks))
-                   (str (.toFixed (* 100 (/ (game/sum-value (first @decks)) 416)) 0) "%")]
+                   (str (count (first @decks)) " cards")
+                   (str (game/sum-value (first @decks)) " points")
+                   (str (.toFixed (* 100 (/ (game/sum-value (first @decks)) 416)) 0) "% of points")]
                   [counter
                    "Player 2"
-                   (count (second @decks))
-                   (game/sum-value (second @decks))
-                   (str (.toFixed (* 100 (/ (game/sum-value (second @decks)) 416)) 0) "%")]]]
+                   (str (count (second @decks)) " cards")
+                   (str (game/sum-value (second @decks)) " points")
+                   (str (.toFixed (* 100 (/ (game/sum-value (second @decks)) 416)) 0) "% of points")]]]
       )))
 
 (defn deck-view []

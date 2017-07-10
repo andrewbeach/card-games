@@ -1,0 +1,14 @@
+
+
+.counter {
+  font-family: "Roboto";
+  padding: 10px;
+}
+
+.counter-label {
+  font-size: 25px;
+}
+
+.counter-value {
+  font-size: 16px;
+}
